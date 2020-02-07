@@ -1,0 +1,40 @@
+public interface BearKeeper {
+    void washTheBear();
+    void feedTheBear();
+    void petTheBear();
+}
+
+
+larger interfaces should be split into smaller ones. By doing so, we can ensure that implementing 
+classes only need to be concerned about the methods that are of interest to them.
+
+public interface BearCleaner {
+    void washTheBear();
+}
+ 
+public interface BearFeeder {
+    void feedTheBear();
+}
+ 
+public interface BearPetter {
+    void petTheBear();
+}
+
+public class BearCarer implements BearCleaner, BearFeeder {
+ 
+    public void washTheBear() {
+        //I think we missed a spot...
+    }
+ 
+    public void feedTheBear() {
+        //Tuna Tuesdays...
+    }
+}
+
+
+public class CrazyPerson implements BearPetter {
+ 
+    public void petTheBear() {
+        //Good luck with that!
+    }
+}
