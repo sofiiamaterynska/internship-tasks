@@ -1,4 +1,4 @@
-package com.sofiia.production
+package com.sofiia.production.functions.io
 
 import java.io.{BufferedWriter, File, FileWriter}
 
