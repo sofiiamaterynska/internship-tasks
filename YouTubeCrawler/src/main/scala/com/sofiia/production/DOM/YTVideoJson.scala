@@ -1,6 +1,6 @@
 package com.sofiia.production.DOM
 
-object JSONKeyArrays {
+object YTVideoJson {
   val title=Array("snippet", "title")
   val likes=Array("statistics", "likeCount")
   val dislikes=Array("statistics", "dislikeCount")
