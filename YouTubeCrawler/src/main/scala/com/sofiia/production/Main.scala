@@ -1,17 +1,10 @@
 package com.sofiia.production
 
-<<<<<<< HEAD
 import java.io.FileInputStream
 import java.util.Properties
 import java.util.concurrent.{Callable, Executors, FutureTask}
 import scala.concurrent.ExecutionContext.Implicits.global
 
-=======
-import java.util.concurrent.Executors
-
-import com.sofiia.production.functions.io.{FileReader, FileWriterCustom}
-import com.sofiia.production.functions.{YTVideoListParser, YouTubeVideoCrawler}
->>>>>>> Parallel solution with threads added
 import com.google.api.services.youtube.model.VideoListResponse
 import com.sofiia.production.akka.Supervision
 import com.sofiia.production.functions.YouTubeCrawler.Region
@@ -29,25 +22,19 @@ object Main {
      val mostPopularVideosFileName = properties.getProperty("mostPopularVideoFile")
      val APIKey = properties.getProperty("APIKey")
      val amountOfResults = properties.getProperty("numberOfVideos")
-<<<<<<< HEAD
      val filePathForFuture = properties.getProperty("filePathForFuture")
      val filePathForAkka = properties.getProperty("filePathForAkka")
-=======
-     val fileNameForFuture = properties.getProperty("fileNameForFuture")
->>>>>>> Parallel solution with threads added
 
      val response: VideoListResponse = new YouTubeVideoCrawler()
        .requestOnMostPopularVideo(APIKey, amountOfResults.toInt, Region.UnitedStates)
      FileWriterCustom.write(mostPopularVideosFileName, response.toPrettyString)
      new YTVideoListParser().fromJson(FileReader.read(mostPopularVideosFileName))
 
-<<<<<<< HEAD
+
      parallelDataCrawlingToFiles(APIKey, fileLocation)
      parallelDataCrawlingWithFutureToFile(APIKey, filePathForFuture)
      new Supervision().parallelAkka(APIKey, videosIDArray, 5, filePathForAkka)
-=======
-     parallelDataCrawlingToFiles(APIKey, YTVideoJson.fileLocation)
->>>>>>> Parallel solution with threads added
+
    }
 
   def parallelDataCrawlingToFiles(APIKey: String, fileLocation: String) : Unit = {
