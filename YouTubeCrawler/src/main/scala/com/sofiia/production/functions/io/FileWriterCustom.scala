@@ -11,4 +11,8 @@ object FileWriterCustom {
     bw.close()
   }
 
+  def writeFromListToJson(fileName: String, list:List[String]): Unit ={
+    write(fileName, list.toString.replace("List(","[").replace(')', ']'))
+  }
+
 }
