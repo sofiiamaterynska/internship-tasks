@@ -4,7 +4,7 @@ import akka.actor.{Actor, ActorRef}
 import com.sofiia.production.akka.StorageActor.Operations
 import com.sofiia.production.functions.YouTubeVideoCrawler
 
-class Workers(APIKey: String,  actorRef: ActorRef) extends Actor{
+class CrawlerActor(APIKey: String,  actorRef: ActorRef) extends Actor{
   override def receive: Receive = {
     case id: String =>
       val video = new YouTubeVideoCrawler().getVideoDataById(APIKey, id)

@@ -11,11 +11,12 @@ import scala.concurrent.duration._
 class Supervision (implicit executionContext: ExecutionContext) {
   def parallelAkka(APIKey: String, idArray: Array[String], numberOfActors: Int, filePathForAkka: String) = {
     val system = ActorSystem("YT-Crawler")
-    val array: ArrayBuffer[String] = ArrayBuffer.empty[String]
-    val writer = system.actorOf(Props(new StorageActor(array, idArray.length,  filePathForAkka)), name = "writer")
-    val router2: ActorRef =
-      system.actorOf(BalancingPool(numberOfActors).props(Props(new Workers(APIKey,writer))), "router2")
-    idArray.foreach(item => router2 ! item )
+    val writer = system.actorOf(Props(new StorageActor(idArray.length,  filePathForAkka)), name = "writer")
+    val poolOfCrawlerActors: ActorRef =
+      system.actorOf(BalancingPool(numberOfActors).props(Props(new CrawlerActor(APIKey,writer))), "router")
+    idArray.foreach(item => poolOfCrawlerActors ! item )
     system.scheduler.scheduleWithFixedDelay(0.microseconds, 5.seconds, writer, Operations.FLUSH)
+    Thread.sleep(7000)
+    system.terminate()
   }
 }
