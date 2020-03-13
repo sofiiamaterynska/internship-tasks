@@ -11,3 +11,13 @@ libraryDependencies += "com.fasterxml.jackson.core" % "jackson-core" % jacksonVe
 libraryDependencies += "com.fasterxml.jackson.core" % "jackson-databind" % jacksonVersion
 libraryDependencies += "com.fasterxml.jackson.module" %% "jackson-module-scala" % jacksonVersion
 libraryDependencies += "com.typesafe.akka" %% "akka-actor" % "2.6.3"
+libraryDependencies += "org.scalatest" %% "scalatest" % "3.0.8" % "test"
+
+lazy val scalatest = "org.scalatest" %% "scalatest" % "3.0.1"
+lazy val root = (project in file("."))
+  .configs(IntegrationTest)
+  .settings(
+    scalaVersion:= "2.13.1",
+    Defaults.itSettings,
+    libraryDependencies += scalatest % "it,test"
+  )

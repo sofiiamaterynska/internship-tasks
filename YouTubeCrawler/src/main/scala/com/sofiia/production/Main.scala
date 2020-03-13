@@ -3,8 +3,8 @@ package com.sofiia.production
 import java.io.FileInputStream
 import java.util.Properties
 import java.util.concurrent.{Callable, Executors, FutureTask}
-import scala.concurrent.ExecutionContext.Implicits.global
 
+import scala.concurrent.ExecutionContext.Implicits.global
 import com.google.api.services.youtube.model.VideoListResponse
 import com.sofiia.production.akka.Supervision
 import com.sofiia.production.functions.YouTubeCrawler.Region
