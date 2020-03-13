@@ -10,3 +10,4 @@ libraryDependencies += "com.google.apis" % "google-api-services-youtube" % "v3-r
 libraryDependencies += "com.fasterxml.jackson.core" % "jackson-core" % jacksonVersion
 libraryDependencies += "com.fasterxml.jackson.core" % "jackson-databind" % jacksonVersion
 libraryDependencies += "com.fasterxml.jackson.module" %% "jackson-module-scala" % jacksonVersion
+libraryDependencies += "com.typesafe.akka" %% "akka-actor" % "2.6.3"

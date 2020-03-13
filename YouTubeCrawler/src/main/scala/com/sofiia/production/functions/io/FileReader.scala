@@ -1,6 +1,6 @@
 package com.sofiia.production.functions.io
 
-import scala.io.Source._
+import scala.io.Source.fromFile
 
 object FileReader {
 
