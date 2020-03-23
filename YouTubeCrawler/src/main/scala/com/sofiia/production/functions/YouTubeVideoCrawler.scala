@@ -12,7 +12,7 @@ class YouTubeVideoCrawler {
   }
 
   def getVideoDataById(APIKey:String, Id: String): Video = {
-    val videoResponse = YTCrawler.connection(APIKey).videos().list("snippet").setId(Id).execute()
+    val videoResponse = YTCrawler.connection(APIKey).videos().list("snippet,contentDetails,statistics").setId(Id).execute()
     videoResponse.getItems.get(0)
 
   }
