@@ -1,0 +1,9 @@
+#!/usr/bin/env bash 
+filePath=/home/sofiiamaterynska/Documents/internship-tasks/YTConfig.properties
+testClassWithArguments=com.sofiia.production.functions.YTVideoCrawlerTest
+unitTestClass=com.sofiia.production.functions.YTVideoListParserTest
+
+sbt clean
+sbt compilesbt "run $filePath"
+sbt "testOnly $testClassWithArguments  -- -DfilePath=$filePath"
+sbt "testOnly $unitTestClass "
